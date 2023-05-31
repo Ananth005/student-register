@@ -15,6 +15,11 @@ errorMessages: any;
   usernam: string;
   username: string;
   password: string;
+  showPassword: boolean = false;
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
  
   
  

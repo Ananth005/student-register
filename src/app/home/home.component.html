@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+<nav class="navbar navbar-expand navbar-dark bg-dark ">
   <a class="navbar-brand" routerLink="/home">Home Page</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +22,7 @@
   </div>
   <div >
     <div class="container col-12 text-center ">
-      <button class="btn btn-secondary bg-gradient btn-md px-5 fw-bold" type="submit" href="javascript:void(0);" (click)="logout()">Log out</button>
+      <button class="btn btn-secondary bg-gradient btn-md` fw-bold" type="submit" href="javascript:void(0);" (click)="logout()">Log out</button>
   </div>
   </div>
 </nav>
@@ -32,37 +32,38 @@
   </p>
     <button class="btn btn-secondary bg-gradient btn-lg px-5 fw-bold" type="submit" href="javascript:void(0);" (click)="Objects()" (click)="showtable = true">Show</button>
 </div>
+<div class="table-responsive"><table class="table" *ngIf="showtable">
+  <thead> 
+    <tr >
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Register Number</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let obj of getPaginatedItems()" class="">
+      <td>{{ obj.id }}</td>
+      <td>{{ obj.first_name }}</td>
+      <td>{{ obj.last_name }}</td>
+      <td>{{ obj.reg_no }}</td>
+      <td>{{ obj.email }}</td>
+      <td>{{ obj.phone_number }}</td>
+      <td>{{ obj.address }}</td>
+      <!-- <td>{{ obj.dob }}</td> -->
+      <!-- <td>{{ obj.username }}</td> -->
+      <!-- <td>{{ obj.password }}</td>
+      <td>{{ obj.gender }}</td> -->
+    </tr>
+  </tbody>
+  
+  
+</table></div>
 
-<table class="table" *ngIf="showtable">
-    <thead> 
-      <tr >
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Register Number</th>
-        <th>Email</th>
-        <th>Phone Number</th>
-        <th>Address</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let obj of getPaginatedItems()" class="">
-        <td>{{ obj.id }}</td>
-        <td>{{ obj.first_name }}</td>
-        <td>{{ obj.last_name }}</td>
-        <td>{{ obj.reg_no }}</td>
-        <td>{{ obj.email }}</td>
-        <td>{{ obj.phone_number }}</td>
-        <td>{{ obj.address }}</td>
-        <!-- <td>{{ obj.dob }}</td> -->
-        <!-- <td>{{ obj.username }}</td> -->
-        <!-- <td>{{ obj.password }}</td>
-        <td>{{ obj.gender }}</td> -->
-      </tr>
-    </tbody>
-    
-    
-  </table>
+
   <div class="text-center" *ngIf="showtable">
     <ul class="pagination pagination-dark">
       <li class="page-item" [class.disabled]="currentPage === 1">
