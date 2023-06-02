@@ -13,7 +13,13 @@ export class HomeComponent implements OnInit{
   objects: any[];
   constructor(private http: HttpClient,private router: Router, private authService: AuthService) {}
   currentPage = 1;
-  itemsPerPage = 2;
+  itemsPerPage = 10;
+  contact=false;
+  contacts(){
+    this.contact=!this.contact
+  }
+  
+  
 
 
   onPageChange(pageNumber: number): void {
@@ -29,15 +35,18 @@ export class HomeComponent implements OnInit{
   }
   //get the sliced list items for each page
   getPaginatedItems(): any[] {
+
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     return this.objects.slice(startIndex, endIndex);
+    
   }
 
  
   
   ngOnInit() :void{
     this.Objects();
+    
     this.authService.canaccess();  
   }
   logout() {
@@ -55,9 +64,13 @@ export class HomeComponent implements OnInit{
 
 //to  get the list of users from the api
   Objects(){
-    this.http.get<any[]>('https://final-vy64.onrender.com/student_list?page=1&page_size=10').subscribe(
+    this.http.get<any[]>('https://final-vy64.onrender.com/student_list?page=1&page_size=60').subscribe(
       response => {
         this.objects = response;         
+       
+        this.objects=this.objects.sort((a, b) => a.id - b.id);
+        // console.log(this.objects)
+       
       },
       error => {
         console.error('Error retrieving objects', error);

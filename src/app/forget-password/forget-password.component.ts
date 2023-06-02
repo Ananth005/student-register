@@ -24,6 +24,7 @@ onSubmit(p:NgForm){
         error => {
           // Handle login error
           console.error('Failed', error);
+          alert(error.error.detail);
         }
       );
 }
