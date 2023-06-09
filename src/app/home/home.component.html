@@ -21,12 +21,16 @@
   
   <div >
     <div class="container col-12 text-center ">
-      <button class="btn btn-secondary bg-gradient btn-lg fw-bold" type="submit" href="javascript:void(0);" (click)="logout()">Log out</button>
+      <button class="btn btn-secondary bg-gradient btn-lg fw-bold" type="submit" href="javascript:void(0);" (click)="logout()" (click)="loading=true">Log out</button>
   </div>
   </div>
 </nav>
 
 <h2 class="fw-bold mb-2 text-uppercase  text-center text-black">Home page</h2>
+
+<div class=" d-flex justify-content-center"><div *ngIf="loading" class="spinner-border text-dark text-center" role="status">
+  <span class="sr-only"></span>
+</div></div>
 
 
 <div *ngIf="contact" class="card col-2 ms-4" >

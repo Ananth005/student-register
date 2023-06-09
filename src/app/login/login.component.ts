@@ -19,6 +19,7 @@ errorMessages: any;
   password: string;
   showPassword: boolean = false;
   private token:string='';
+  loading = false;
   
   
 
@@ -110,6 +111,7 @@ decryptPassword(encryptedPassword: string): string {
 
   return decrypted.toString(CryptoJS.enc.Utf8);
 }
+
 
 
   

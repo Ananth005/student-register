@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./forget-password.component.css']
 })
 export class ForgetPasswordComponent {
+  loading=false;
   constructor(private http: HttpClient,private router: Router) {}
 onSubmit(p:NgForm){
   console.log(p)
@@ -18,7 +19,9 @@ onSubmit(p:NgForm){
         response => {
           // Handle successful login response
           console.log('Password Changed successfully');
-          alert("Password changed successfully")
+          alert("Password changed successfully");
+          this.router.navigate(['/']);
+
           
         },
         error => {

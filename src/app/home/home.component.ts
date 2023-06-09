@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 })
 export class HomeComponent implements OnInit{
   showtable = false;
+  loading= false;
   objects: any[];
   constructor(private http: HttpClient,private router: Router, private authService: AuthService) {}
   currentPage = 1;
@@ -64,7 +65,7 @@ export class HomeComponent implements OnInit{
 
 //to  get the list of users from the api
   Objects(){
-    this.http.get<any[]>('https://final-vy64.onrender.com/student_list?page=1&page_size=60').subscribe(
+    this.http.get<any[]>('https://final-vy64.onrender.com/student_list?page=1&page_size=70').subscribe(
       response => {
         this.objects = response;         
        
